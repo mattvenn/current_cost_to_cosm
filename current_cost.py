@@ -10,6 +10,16 @@ import datetime
 import time
 import re
 
+#locking
+file = "/tmp/current_cost.lock"
+fd = open(file,'w')
+try:
+    print "check lock"
+    fcntl.lockf(fd,fcntl.LOCK_EX | fcntl.LOCK_NB)
+    print "ok"
+except IOError:
+    print "another process is running with lock. quitting!", file
+    exit(1)
 
 #private key stored in a file
 keyfile="api.key"
