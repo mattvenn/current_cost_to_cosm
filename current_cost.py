@@ -6,6 +6,7 @@ author: matt venn
 #import the cosm library
 from CosmFeedUpdate import *
 import serial
+import fcntl
 import datetime
 import time
 import re
