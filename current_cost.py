@@ -32,7 +32,11 @@ pfu = CosmFeedUpdate(feed_id,key)
 meter_port = "/dev/ttyUSB0"
 
 def read_meter():
-    serial_port = serial.Serial(meter_port,57600)
+    serial_port = serial.Serial()
+    serial_port.port=meter_port
+    serial_port.baudrate=57600
+    serial_port.timeout=10
+    serial_port.open()
     print "opened serial"
 
     data = None
